@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace ReceiptScanner
 {
-   public class Program
+    public class Program
     {
         static void Main()
         {
@@ -10,7 +11,8 @@ namespace ReceiptScanner
             {
                 Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-                ReceiptScannerService.Data();
+                var data = ReceiptScannerService.Data();
+
             }
             catch (Exception ex)
             {

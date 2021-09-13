@@ -39,9 +39,9 @@ namespace ReceiptScanner
             return count;
         }
 
-        public static async void Data()
+        public static async Task Data()
         {
-            var data = await ReceiptScannerService.GetReceiptData();
+            var data = await GetReceiptData();
 
             ReceiptScannerService receiptScanner = new ReceiptScannerService();
             var domesticProducts = receiptScanner.Products(data, true);

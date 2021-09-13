@@ -14,16 +14,17 @@ namespace ReceiptScanner
         {
             var jsonString = "";
 
-            HttpClient client = new HttpClient();
 
-            client.BaseAddress = new Uri(apiUrl);
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = await client.GetAsync(apiUrl);
+            using (var client = new HttpClient()) {
 
-            if (response.IsSuccessStatusCode)
-            {
-                jsonString = await response.Content.ReadAsStringAsync();
+                client.BaseAddress = new Uri(apiUrl);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
+                if (response.IsSuccessStatusCode)
+                {
+                    jsonString = await response.Content.ReadAsStringAsync();
+                }
             }
 
             return jsonString;
